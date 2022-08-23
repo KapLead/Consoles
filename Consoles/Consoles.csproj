@@ -42,10 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Buffer.cs" />
+    <Compile Include="CellLayer.cs" />
     <Compile Include="Colors.cs" />
+    <Compile Include="Cursor.cs" />
+    <Compile Include="Layer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screen.cs" />
     <Compile Include="WinAPI.cs" />
+    <Compile Include="Write.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

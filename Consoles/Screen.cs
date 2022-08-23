@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Drawing.Design;
+using System.Text.RegularExpressions;
 
 namespace Consoles
 {
     public partial class Consolas
     {
-        /// <summary> Максимальное кол-во символов в строке </summary>
-        public static int MaxWidth { get; private set; } = Console.WindowWidth;
-        
-        /// <summary> Максимальное кол-во строк в консоли </summary>
-        public static int MaxHeight { get; private set; } = Console.WindowHeight;
-
+        /// <summary> Заголовок окна </summary>
+        public static string Title
+        {
+            get => Console.Title;
+            set => Console.Title = value;
+        }
 
         /// <summary> Усстановка параметров окна </summary>
         /// <param name="width">кол-во символов в строке</param>
@@ -18,10 +20,15 @@ namespace Consoles
         public static void SetupScreen(int width=120, int height=30,bool noresize=false)
         {
             // размеры окна
-            Console.BufferWidth = Console.WindowWidth = MaxWidth = width;
-            Console.BufferHeight = Console.WindowHeight = MaxHeight = height;
+            Console.BufferWidth = Console.WindowWidth = width;
+            Console.BufferHeight = Console.WindowHeight = height;
+       
+            Original.Initialize(width,height).Clear(Back, Fore);
+    
             if (noresize && GetConsoleWindow() != IntPtr.Zero)
                 NoResizeConsole();
+
+            CursorVisible = false;
         }
 
         /// <summary> Запрет изменения размеров окна (операция необратима) </summary>
