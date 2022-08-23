@@ -45,15 +45,5 @@ namespace Consoles
             return ret;
         }
 
-        public static void WriteCharacterStrings(int start, int end,bool changeColor)
-        {
-            for (int ctr = start; ctr <= end; ctr++)
-            {
-                if (changeColor)
-                    Console.BackgroundColor = (ConsoleColor)((ctr - 1) % 16);
-
-                Console.WriteLine(new String((char)(ctr + 64), 30));
-            }
-        }
     }
 }
